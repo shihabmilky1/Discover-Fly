@@ -138,3 +138,10 @@ main{
 .custom-hover{
     cursor: pointer;
 }
+.confirm {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    line-height: 30px;
+}
