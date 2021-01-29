@@ -32,7 +32,7 @@
             <h3>Booking Flights</h3>
             <div class="input-group">
                 <label for="">Flying From</label>
-                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+                <input class="inp-style" type="text" name="" placeholder="Dhaka, Bangladesh">
             </div>
             <div class="input-group">
                 <label for="">Flying To</label>
@@ -41,7 +41,7 @@
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">Departure</label>
-                    <input class="inp-style" type="date" name="">
+                        <input class="inp-style" type="date" name="">
                 </div>
                 <div class="input-group">
                     <label for="">Return</label>
@@ -51,21 +51,24 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($150)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <input id="firstClass-count" class="inp-style inp-width" type="number" name="" value="1">
                 </div>
                 <div class="plus-minus-btn">
-                    <span id="frist-class-plus">+</span>
-                    <span id=""> -</span>
+                    <p> <span class="custom-hover" id="firstClass-plus">+</span>
+                        <span class="custom-hover" id="firstClass-minus"> -</span>
+                    </p>
                 </div>
             </div>
-            
+
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($100)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <input id="economyClass-count" value="1" class="inp-style inp-width" type="number" name="">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span>+</span> <span>-</span> </p>
+                    <p>
+                        <span id="economyClass-plus" class="custom-hover">+</span>           <span id="economyClass-minus" class="custom-hover">-</span>
+                    </p>
                 </div>
             </div>
             <div class="calculations">
@@ -74,7 +77,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$500</p>
+                        <p>$ <span id="ticket-price">150</span></p>
                     </div>
                 </div>
 
@@ -83,7 +86,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$50</p>
+                        <p>$15</p>
                     </div>
                 </div>
                 <hr>
@@ -92,7 +95,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$550</p>
+                        <p>$165</p>
                     </div>
                 </div>
             </div>
@@ -101,14 +104,62 @@
 
         <div class="booking-content">
             <h1>discover <br> around the world</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise voluptatibus quam</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias
+                veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise
+                voluptatibus quam</p>
         </div>
-    </section>
+        </section>
 
-    <!--Thank You-->
-    <script>
-        
-    </script>
+        <!--Thank You-->
+        <script>
+            //First Class Click Action
+            document.getElementById('firstClass-plus').addEventListener('click', function () {
+                const ticketValue = getTicketValue('plus')
+            });
+            document.getElementById('firstClass-minus').addEventListener('click', function () {
+               const ticketValue = getTicketValue('minus')
+            });
+            //Economy Class Click Action
+            document.getElementById('economyClass-plus').addEventListener('click',function(){
+                getEconomyValue('plus')
+                // const economyClassTicketPrice = economyClassNewTicket * 100;
+                // console.log(economyClassTicketPrice);
+            });
+            document.getElementById('economyClass-minus').addEventListener('click',function(){
+                getEconomyValue('minus')
+            });
+
+
+            //Click Action Common Function
+            function getTicketValue(ticket) {
+                const firstClassTicketCount = document.getElementById('firstClass-count');
+                const firstClassTicketAmount = parseInt(firstClassTicketCount.value);
+                let firstClassNewTicket = firstClassTicketAmount;
+                if (ticket == 'plus') {
+                    firstClassNewTicket = firstClassTicketAmount + 1;
+                }
+                if (ticket == 'minus' && firstClassNewTicket > 0) {
+                    firstClassNewTicket = firstClassTicketAmount - 1;
+                }
+                const firstClassTicketPrice = firstClassNewTicket * 150;
+                document.getElementById('firstClass-count').value = firstClassNewTicket;
+                document.getElementById('ticket-price').innerText = firstClassTicketPrice;
+            }
+            //
+            function getEconomyValue(ticket){
+                const economyClassTicketCount = document.getElementById('economyClass-count');
+                const economyClassTicketAmount = parseInt(economyClassTicketCount.value);
+                // const economyClassNewTicket = economyClassTicketAmount - 1;
+                let economyClassNewTicket = economyClassTicketAmount;
+                if(ticket == 'plus'){
+                    economyClassNewTicket = economyClassTicketAmount + 1;
+                }
+                if(ticket == 'minus' && economyClassNewTicket > 0){
+                    economyClassNewTicket = economyClassTicketAmount - 1;
+                }
+                document.getElementById('economyClass-count').value = economyClassNewTicket;
+            }
+        </script>
 </body>
 
 </html>

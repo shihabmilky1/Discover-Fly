@@ -135,3 +135,6 @@ main{
     display: flex;
     justify-content: space-between;
 }
+.custom-hover{
+    cursor: pointer;
+}
