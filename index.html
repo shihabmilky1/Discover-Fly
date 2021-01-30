@@ -211,6 +211,9 @@
             const economyClassTicketCount = ticketCounter('economyClass');
             if (economyClassTicketCount == 0 && firstClassTicketCount == 0) {
                 document.getElementById("confirm-btn").disabled = true;
+                document.getElementById("economyClass-ticket-count").classList.add('confirm-failed');
+                document.getElementById("firstClass-ticket-count").classList.add('confirm-failed');
+                   
                         }
 
             const price = firstClassTicketCount * 150 + economyClassTicketCount * 100;
