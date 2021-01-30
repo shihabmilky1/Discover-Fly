@@ -35,6 +35,9 @@ function getTicketValue(ticketClass, ticketNumber) {
 function calculations() {
     const firstClassTicketCount = ticketCounter('firstClass');
     const economyClassTicketCount = ticketCounter('economyClass');
+    if(economyClassTicketCount == 0 && firstClassTicketCount == 0){
+        document.getElementById('confirm-btn').disabled = true;
+    }
     const price = firstClassTicketCount * 150 + economyClassTicketCount * 100;
     const ticketPrice = ticketConfirmation('ticket-price', price);
     const confirmTicketPrice = ticketConfirmation('confirmTicket-price', price);
@@ -44,6 +47,7 @@ function calculations() {
     const allTicketPriceWithVat = vatCost + price;
     const total = ticketConfirmation('total', allTicketPriceWithVat);
     const confirmTotal = ticketConfirmation('confirm-total', allTicketPriceWithVat);
+      
 }
 //TicketCounter Function
 function ticketCounter(ticketClass) {
